@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>SJH_DAYs</title>
+  <link href="style.css" rel="stylesheet" type="text/css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;700&display=swap" rel="stylesheet">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/e43d0357f9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <div id="cover" onclick="gone()">
+    <img id="logo" src="./images/logo.png">
+    <h3>"Click to start"</h3>
+  </div>
+  <div class="content">
+      <div class="left_bar" id="lb">
+        <i class="fa fa-times" id="close" onclick="hideMenu()"></i>
+        <ul id="var_list">
+          <li><a href="#intro">Intro</a></li>
+          <li><a href="#d_days">D-days</a></li>
+          <li><a href="#photos">Photos</a></li>
+          <li><a href="#to_do_list">To-do list</a></li>
+          <li><a href="#chat">Chat</a></li>
+        </ul>
+      </div>
+      <div class="head">
+        <div id="intro">
+          <i class="fa fa-bars" id="open" onclick="showMenu()"></i>
+          <img id='logo' src="/images/logo.png">
+          <div class="info">
+            <h1>Welcome!</h1><h2>This is <strong>SJH</strong> Web-site</h2>
+            <img class="heart" id="heart1" src="/images/heart_red.png">
+            <img class="heart" id="heart2" src="/images/heart_blue.png">
+            <img class="heart" id="heart3" src="/images/heart_black.png">
+            <img class="heart" id="heart4" src="/images/heart_red.png">
+            <img class="heart" id="heart5" src="/images/heart_blue.png">
+            <img id="sno" src="./images/snoopie.png">
+          </div>
+          <p><strong>Intro</strong><br><br>'SJH' is a corporation established on August 8, 2019. It was created based on the initials of the founders, each 'S.J' and 'J,H'. This website is a commemoration of the days which following the footsteps of 'SJH'. It is also known as lots of activities such as the "Magbangru" exhibition, naver blog challenge diary, restaurant tour, and so on.</p>
+        </div>
+        <div id="d_days">
+          <div id="today">
+            <p class="num" id="days">0</p><span>days</span>
+            <p class="num" id="hours">0<</p><span>hours</span>
+            <p class="num" id="minutes">0</p><span>minutes</span>
+            <p class="num" id="seconds">0</p><span>seconds</span>
+          </div>
+          <p id="count_intro"><strong>How far have we walk</strong><br><br>This numbers have symbolic meaning. It show us how strong "SJH" has been until now. Many people look forward to be continue for a lifetime so that it give us the great happiness & love. </p>
+          <div id="any">
+            <h2>Plese input the anniversary number <br> you want to know :)</h2>
+            <input id="count" onchange="get_day()"/>
+            <div id="days_result"></div>
+            <div id="left_days"></div>
+          </div>
+        </div>
+        <div id="photos">
+          <div class="big">
+            <img id="big" src="./images/poster/poster1.png">
+          </div>
+          <div class="small">
+            <i class="fa-solid fa-angle-left" id="left" onclick="change_l()"></i>
+            <img class="smaPic" id="0" style="height:200px; width:100px;" src="/images/poster/poster1.png">
+            <img class="smaPic" id="1" style="height:250px; width:125px;" src="/images/poster/poster2.png">
+            <img class="smaPic" id="2" style="height:300px; width:150px;" src="/images/poster/poster3.png">
+            <img class="smaPic" id="3" style="height:250px; width:125px;" src="/images/poster/poster4.png">
+            <img class="smaPic" id="4" style="height:200px; width:100px;" src="/images/poster/poster5.png">
+            <img class="smaPic" id="5" hidden src="/images/poster/poster6.png">
+            <img class="smaPic" id="6" hidden src="/images/poster/poster7.png">
+            <img class="smaPic" id="7" hidden src="/images/poster/poster8.png">
+            <img class="smaPic" id="8" hidden src="/images/poster/poster9.png">
+            <img class="smaPic" id="9" hidden src="/images/poster/poster10.png">
+            <img class="smaPic" id="10"hidden src="/images/poster/poster11.png">
+            <i class="fa-solid fa-angle-right" id="right" onclick="change_r()"></i>
+          </div>
+        </div>
+        <div id="to_do_list">
+          <h1 id="list_name">To do list</h1>
+          <div class="do_list">
+            <div id="do_head">
+              <input type="text" id="input_value"/>
+              <input type="button" id="b_add" onclick="add()" value="input"/>
+            </div>
+              <ul id="to_list">
+                  <li class="list">행정법 공부</li>
+                  <li class="list">전화하기</li>
+                  <li class="list">감자튀김 해먹기</li>
+                  <li class="list">input 디자인 수정</li>
+              </ul>
+            </div>
+          </div>
+        <div class="chat" id="chat">
+          <div class="user-container">
+            <label for="nickname">Name : </label>
+            <input type="text" id="nickname">
+          </div>
+          <div class="display-container">
+            <ul class="chatting-list">
+              <li id="chat_start">Conversation has been started</li>
+            </ul>
+          </div>
+          <div class="input-container">
+            <span>
+              <input type="text" class="chatting-input">
+              <button class="send-button">Send</button>        
+            </span>
+          </div>
+        </div>
+<!--스크립트 위치에 따른 오류 발생, 두개 동시 실행시 하나 실행 안됨 가 아니라 query 에서 불러올때 d를 t로 표기하는 실수.... 29:42-->
+      </div>
+    </div>
+  <script src="js/script.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/chat.js"></script>
+</body>
+</html>
+<!--30:39 chatList가 아니라 chatlist 변수 이름 차이 확인-->

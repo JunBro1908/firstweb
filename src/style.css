@@ -1,0 +1,601 @@
+*{
+  font-family: 'Roboto Slab', serif;
+  background: #f9e6be;
+  padding:0;
+}
+
+html {
+  overflow-y:hidden;
+}
+
+#cover{
+  background: linear-gradient(90deg, rgba(245,247,211,1) 0%, rgba(255,212,141,1) 11%, rgba(142,90,45,1) 100%);
+  position: fixed;
+  width:100%;
+  height:100%;
+  z-index:3;
+  text-align:center;
+  transition:0.7s;
+}
+
+#cover img {
+  background:transparent;
+  height: 30vh;
+  /*전에 선언한 속성은 무시 된다*/
+  position:relative;
+  top: 30%;
+}
+
+#cover h3 {
+  background:transparent;
+  position:relative;
+  top: 40%;
+  color:white;
+  font-size:45px;
+}
+
+body{
+  margin: 0px;
+  height:100%;
+  width:100%;
+  /*화면을 전체로 설정해야지 화면이 핸드폰으로 바뀌어도 내용물이 가운데 정렬이 된다.*/
+}
+
+.content{
+  position: relative;
+  display: flex;
+  width: 100%;
+  height:100%;
+}
+
+.head{
+  text-align:center;
+  /*width:100vw; 이걸 하면 왜 왼쪽 정렬이 될까?*/
+  position:relative;
+    /*너비 조정을 못하겠다. 그래서 일단 원래 자리 차지하는대로 둘다 relative를 선언해 보니 자체적으로 overflow scroll을 하면 콘텐츠를 내릴 수 있게 되어있다. 굳이 fixed를 안해도 되는 것이다. 또한 head가 빈 공간을 전부 차지 할 수 있게끔 flex:1을 설정했다.*/
+  flex:1;
+  overflow-y:scroll;
+  height:100vh;
+  /*height를 100vh로 하지 않아서 scroll만 넣었을때 처음 들어간 사이트 크기만 스크롤 되고 전체 컨텐츠를 담지 못했다. 그래서 높이를 vh로 설정하여 보고 있는 화면 기준으로 스크로를 내릴 수 있게 하였다.*/
+    /*position:fixed;
+    좌측 바를 고정시키고 내용을 스크롤 하고 싶을때 : 좌측 바와 우측 내용을 수평으로 배치하고 우측 내용을 화면 기준으로 고정시키는 position:fixed를 한다. 그 상태에서 우측 내용을 스크롤 할 수 있게
+    overflow를 선언하여 scroll를 설정해주면 콘텐츠에 다 담은 내용을 스크롤 할 수 있다. 다만 우측 내용이 부모 요소에서 빠져 나오므로 그 뒷 배경에는 빈공간이 되는 것이고 fixed한 콘텐츠에 대해서 크기가 자동 설정되므로 생각했던 배치가 되지 않는다 즉 적절히 width를 조절해야한다.*/
+}
+.head::-webkit-scrollbar {
+    display: none;
+}
+
+#logo{
+  height:200px;
+}
+
+@media (max-width: 1000px){
+  .left_bar{
+    /*transform은 block 내에 차지하는 부분을 그대로 두고 표출되는 화면만 바꿔준다. absolute를 선언하면 차지하는 부분 전체가 빠져버리는 것이다.*/
+/*transform:translate(-300px,0);
+    transition-duration:2s;*/
+    left:-200px;
+    transition:0.7s;
+    z-index:2;
+    position:absolute;
+  }
+}  
+
+@media (min-width: 1000px){
+  .left_bar{
+  /*transform:translate(0,0);
+    transition-duration:2s;*/
+    left:0;
+    transition: 0.7s;
+    position:relative;
+    z-index:2;
+    /*relative vs absolute position의 기본 상태는 static이다. 그런데 z-index를 사용하고 싶다면? 그럼 relative지 그런데, relative 자기 위치를 기준으로 조정을 할 수 있게 되어있다. 스크린를 기준으로 조정을 하고 싶다면 absolute로 선언을 해야해. 다만 absolute로 선언을 한다면 화면을 기준으로 배치해야하기 때문에 속해진 부모노드에서 쏙 뽑아내기때문에 부모의 element에서 제거되고 움직이게 된다.*/
+  }
+
+  .fa { 
+  visibility:hidden;
+  }
+}
+
+.left_bar{
+  background:#fffde5;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  min-width:180px;
+  max-width:180px;
+  height:100vh;
+  overflow-y:auto;
+}
+
+.left_bar ul{
+  list-style: none;
+  background: #fffde5;
+  max-height:400px;
+  padding-left:30px;
+}
+
+.left_bar li{
+  font-size: 25px;
+  background:#fffde5;
+  line-height:50px;
+}
+
+li a{
+  text-decoration:none;
+  background:transparent;
+  color: black;
+}
+
+.fa {
+  font-size: 35px;
+  background:transparent;
+  margin:10px;
+  cursor: grab;
+}
+
+.info h2{
+  margin-bottom:100px;
+}
+
+#open{
+  position:absolute;
+  top:10px;
+  left:10px;
+}
+
+.heart{
+  height: 30px;
+  position:relative;
+  background:transparent;
+}
+#heart1 {
+  top: 20px;
+  left: -50px;
+}
+#heart2 {
+  top: -30px;
+  right: 60px;
+}
+#heart3 {
+  top: 10px;
+  right: 30px;
+}
+#heart4 {
+  top: -5px; 
+  left: 20px;
+}
+#heart5 {
+  top: 13px;  
+  right: -60px;
+}
+
+.heart:hover{
+  transition: 1s;
+  transform: rotate(360deg) scale(1.5) translateY(130px);
+  cursor:grab;
+}
+
+#sno{
+  height:260px;
+  display:block;
+  margin:auto;
+  padding-top:60px;
+}
+
+#intro {
+  margin:auto;
+}
+
+#intro p{
+  border: 1px solid rgb(251, 227, 208);
+  background: rgb(255, 230, 209);
+  border-radius:10px;
+  padding:20px;
+  margin-bottom:10px;
+  margin-top:50px;
+  margin-left:auto;
+  margin-right:auto;
+  max-width: 700px;
+}
+
+strong{
+  background:transparent;
+}
+
+@media (max-width:1000px) {
+  #intro p{
+  min-width:200px;
+  margin-top: 50px;
+  margin-left: max(10px,15%);
+  margin-right:max(10px, 15%);
+  }
+
+}
+
+@media (max-width:750px) {
+  #count_intro{
+    margin-left: max(5px,15%);
+    margin-right: max(5px,15%);
+    min-width:200px;
+    max-width:300px;  
+  }
+}
+
+@media (min-width:750px) {
+  #count_intro  {  
+    margin-left:auto;
+    margin-right:auto; }
+}
+  
+#intro p:hover{
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+  /*가로 세로 그림자흐릿 그림자확장 색*/
+}
+
+.big img {
+  height:500px;
+  width:350px;
+  margin-top:150px;
+  border: 1px black solid;
+}
+
+.small{
+  display:flex;
+  justify-content:center;
+  margin:30px;
+  align-items:center;
+  margin-bottom:200px;
+}
+
+.smaPic{
+  border: 1.5px white solid;
+  margin-top:auto;
+  margin-bottom:auto;
+  margin-left:2px;
+  margin-right:3px;
+}
+
+.smaPic:hover{
+  border: 2px black dotted;
+  cursor:grab;
+}
+
+#left{
+  font-size:50px;
+  color:white;
+  position:relative;
+  margin-right:10px;
+  height:50px;
+  /*다른 자리를 침범하는 오류 발생*/
+}
+
+#right{
+  font-size:50px;
+  color:white;
+  position:relative;
+  margin-left:10px;
+  height:50px;
+  /*다른 자리를 침범하는 오류 발생*/
+}
+
+#today{
+  font-size: 50px;
+  border: 5px white solid;
+  display:inline-block;
+  padding:20px;
+  margin-top:80px;
+  margin-bottom:80px;
+}
+
+#today span{
+  font-size:30px;
+}
+
+.num{
+  margin-top:10px;
+  margin-bottom:0;
+}
+
+#any{
+  margin-top:100px;
+}
+
+#count {
+  border: 5px white solid;
+  width:156.8px;
+  text-align: center;
+}
+
+#days_result {
+  color:white;
+  font-size:35px;
+  margin-top:60px;
+}
+
+#count_intro{
+  border: 1px solid rgb(251, 227, 208);
+  background: rgb(255, 230, 209);
+  border-radius:10px;
+  padding:20px;
+  margin-top: 30px;
+  max-width: 500px;
+}
+
+#count_intro:hover{
+  box-shadow: 0 0 20px 0px rgba(0,0,0,0.2);
+}
+
+
+#left_days {
+  color:white;
+  font-size : 45px;
+  margin-top : 15px;
+}
+
+.do_list {
+  display:flex;
+  flex-direction:column;
+  margin-bottom:10px;
+}
+
+#to_do_list{
+  display:inline-block;
+  border: 3px beige solid;
+  padding:10px;
+  margin-bottom:200px;
+}
+
+#list_name{
+}
+
+.list {
+  list-style:none;
+  display:flex;
+  justify-content:space-between;
+  font-size:20px;
+  background: #fff6da;
+  padding:10px;
+/*   border: 0.5px #faf4f4 dashed; */
+}
+
+@media (max-width:1000px) {
+  #input_value {
+    width:200px;
+  }
+}
+
+.close {
+  font-size:20px;
+  background: #fff6da;
+}
+/*새로 입력한 값은 속성 적용 안되는 문제 발생*/
+
+#do_head {
+  display: block;
+  margin:auto;
+  height:40px;
+  margin-bottom:15px;
+}
+
+#to_list {
+  border: 1px white solid;
+  text-align: left;
+  display: block;
+  margin:auto;
+}
+
+#b_add {
+  background-color: #fbeee0;
+  border: 2px solid #422800;
+  border-radius: 30px;
+  box-shadow: #422800 4px 4px 0 0;
+  color: #422800;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 600;
+  font-size: 18px;
+  padding: 0 8px;
+  line-height: 25px;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  margin:auto;
+}
+
+#b_add:hover {
+  background-color: #fff;
+}
+
+#b_add:active {
+  box-shadow: #422800 2px 2px 0 0;
+  transform: translate(2px, 2px);
+}
+
+#input_value {
+  font-size: 18px;
+  border: 2px #e2acac solid;
+  margin-right:25px;
+}
+
+.close:hover {
+  background-color: #f44336;
+  color: white;}
+
+@media (max-width: 1000px){
+
+  .big img {
+  height:450px;
+  width:300px;
+}
+  #input_value {
+  margin-right:20px;
+}
+}
+
+.chat {
+  width:450px;
+  border: 5px double beige;
+  flex-direction:column;
+  display:flex;
+  margin:auto;
+  position:relative;
+  margin-bottom:60px;
+}
+
+#chat_start{
+  background:transparent;
+  margin:15px;
+  list-style:none;
+}
+
+.sent {
+  display:flex;
+  margin:15px;
+  flex-direction: row-reverse;
+  background:transparent;
+}
+
+.received {
+  display:flex;
+  margin:10px;
+  background:transparent;
+}
+
+.chatting-list {
+  display:flex;
+  flex-direction:column-reverse;
+/*기본적으로 항상 스크롤을 내린 것으로 설정하려고 함.*/
+  overflow-y: auto;
+  height: 500px;
+  background: rgb(249,230,190);
+  background: linear-gradient(0deg, rgba(249,230,190,0.6727065826330532) 0%, rgba(255,255,228,1) 50%, rgba(249,230,190,0.6923144257703081) 100%);
+}
+
+.chatting-list::-webkit-scrollbar { 
+    display: none;
+    width: 0 !important;
+}
+
+#nickname {
+  border: 3px solid beige;
+}
+
+.chatting-input{
+  border: 3px solid beige;
+  width:300px;
+  height:50px;
+  position:relative;
+  top:7%;
+}
+
+.profile {
+  display:flex;
+  flex-direction: column;
+  position: relative;
+  top:-8px;
+  background:transparent;
+  align-items: center;
+  height:30px;
+}
+
+.profile > img {
+  border-radius: 50%;
+  height:45px;
+  width:45px;  
+  margin-right:5px;
+  margin-left:5px;
+}
+
+.user 
+{
+  background:transparent;  
+  font-size: 15px;
+}
+
+.time {
+  font-size:10px;
+  display:inline-block;
+  margin-left:3px;
+  margin-right:3px;
+  height:10px;
+  position:relative;
+  top:80%;
+  background:transparent;
+  white-space: nowrap;
+}
+
+.message {
+  background:beige;
+  border-radius: 10px 10px 10px 10px;
+  font-size:20px;
+  padding:7px;
+  display:block;
+  text-align:left;
+  word-break: break-all;
+  border: 1px solid white;
+}
+
+.user-container {
+  display:inline-block;
+  margin:15px;
+}
+
+.input-container {
+  display:inline-block;
+  margin:10px;
+  background:beige;
+  border: 1px white solid;
+  border-radius: 5px 5px 5px 5px;
+  height:65px;
+}
+
+.input-container > span{
+  background:transparent;
+}
+
+.chatting-input{
+  background:#f8f8ed;
+  border-radius: 5px 5px 5px 5px;
+}
+
+.send-button {
+  box-shadow: 0px 1px 0px 0px #1c1b18;
+	background:linear-gradient(to bottom, #eae0c2 5%, #ccc2a6 100%);
+	background-color:#eae0c2;
+	border-radius:15px;
+	border:2px solid #333029;
+	display:inline-block;
+	cursor:pointer;
+	color:#505739;
+	font-family:Arial;
+	font-size:14px;
+	font-weight:bold;
+	padding:4px 10px;
+  margin:10px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff; 
+}
+
+.send-button:hover {
+	background:linear-gradient(to bottom, #ccc2a6 5%, #eae0c2 100%);
+	background-color:#ccc2a6;
+}
+.send-button:active {
+	position:relative;
+	top:1px;
+}
+
+@media (max-width: 1000px){
+ 
+.chatting-list{
+    height: 300px;
+ }
+.chat {
+  width:300px;
+}
+.chatting-input{
+  width:170px;
+}
+  }
