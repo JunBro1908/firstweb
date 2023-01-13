@@ -32,5 +32,5 @@ io.on("connection", (socket) => {
   })
 })
 
-server.listen(PORT, () => console.log('server is running', PORT))
+httpServer.listen(PORT, () => console.log('server is running', PORT))
 
